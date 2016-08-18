@@ -13,11 +13,25 @@
           fetch="https://github.com/DirtyUnicorns/"
           review="gerrit.dirtyunicorns.com" />
 
+  <remote  name="s3"
+          fetch="https://github.com/haxynox2000/" />
+          
+          
+  <remote revision="refs/heads/aosp-6.0"
+           name="haxynox"
+           fetch="https://github.com/haxynox" />
+
+
  <default revision="refs/tags/android-6.0.1_r62"
           remote="aosp"
           sync-c="true"
           sync-f="true"
           sync-j="8" />
+
+
+ <project path="external/stlport" name="android_external_stlport" remote="haxynox" revision="Mmm"/>
+ <project path="external/sony/boringssl-compat" name="android_external_sony_boringssl-compat" remote="haxynox" revision="Mmm" />
+ <project path="external/exfat" name="android_external_exfat" remote="haxynox" />
 
  <!--AOSP REPOS-->
  <project path="abi/cpp" name="platform/abi/cpp" groups="pdk" />
@@ -407,23 +421,23 @@
  <project path="system/vold" name="android_system_vold" remote="du" revision="m" />
 
  <!--frameworks-->
- <project path="frameworks/av" name="android_frameworks_av" remote="du" revision="m" />
- <project path="frameworks/base" name="android_frameworks_base" remote="du" revision="m" />
- <project path="frameworks/native" name="android_frameworks_native" remote="du" revision="m" />
+ <project path="frameworks/av" name="android_frameworks_av" remote="haxynox" />
+ <project path="frameworks/base" name="android_frameworks_base" remote="haxynox" />
+ <project path="frameworks/native" name="android_frameworks_native" remote="haxynox" />
  <project path="frameworks/opt/cards" name="android_frameworks_opt_cards" remote="du" revision="m" />
  <project path="frameworks/opt/datetimepicker" name="android_frameworks_opt_datetimepicker" remote="du" revision="m" />
- <project path="frameworks/opt/telephony" name="android_frameworks_opt_telephony" remote="du" revision="m" />
+ <project path="frameworks/opt/telephony" name="android_frameworks_opt_telephony" remote="haxynox" />
  <project path="frameworks/opt/timezonepicker" name="android_frameworks_opt_timezonepicker" remote="du" revision="m" />
  <project path="frameworks/opt/net/ims" name="android_frameworks_opt_net_ims" remote="du" revision="m" />
- <project path="frameworks/opt/net/wifi" name="android_frameworks_opt_net_wifi" remote="du" revision="m" />
+ <project path="frameworks/opt/net/wifi" name="android_frameworks_opt_net_wifi" remote="haxynox" />
  <project path="frameworks/webview" name="android_frameworks_webview" remote="du" revision="m" />
 
  <!--hardware-->
- <project path="hardware/broadcom/libbt" name="android_hardware_broadcom_libbt" remote="du" revision="m" />
- <project path="hardware/broadcom/wlan" name="android_hardware_broadcom_wlan" remote="du" revision="m" />
+ <project path="hardware/broadcom/libbt" name="android_hardware_broadcom_libbt" remote="haxynox" />
+ <project path="hardware/broadcom/wlan" name="android_hardware_broadcom_wlan" remote="haxynox" />
  <project path="hardware/invensense" name="android_hardware_invensense" remote="du" revision="m" />
- <project path="hardware/libhardware" name="android_hardware_libhardware" remote="du" revision="m" />
- <project path="hardware/libhardware_legacy" name="android_hardware_libhardware_legacy" remote="du" revision="m" />
+ <project path="hardware/libhardware" name="android_hardware_libhardware" remote="haxynox" />
+ <project path="hardware/libhardware_legacy" name="android_hardware_libhardware_legacy" remote="haxynox" />
  <project path="hardware/qcom/audio" name="android_hardware_qcom_audio" remote="du" revision="m" />
  <project path="hardware/qcom/bt" name="android_hardware_qcom_bt" remote="du" revision="m" />
  <project path="hardware/qcom/camera" name="android_hardware_qcom_camera" remote="du" revision="m" />
@@ -433,9 +447,10 @@
  <project path="hardware/qcom/media" name="android_hardware_qcom_media" remote="du" revision="m" />
  <project path="hardware/qcom/power" name="android_hardware_qcom_power" remote="du" revision="m" />
  <project path="hardware/qcom/wlan" name="android_hardware_qcom_wlan" remote="du" revision="m" />
- <project path="hardware/ril" name="android_hardware_ril" remote="du" revision="m" />
+ <project path="hardware/ril" name="android_hardware_ril" remote="haxynox"  />
  <project path="hardware/ti/omap3" name="android_hardware_ti_omap3" remote="du" revision="m" />
  <project path="hardware/ti/omap4xxx" name="android_hardware_ti_omap4xxx" remote="du" revision="m" />
+ <project path="hardware/samsung" name="android_hardware_samsung" remote="haxynox" />
 
  <!--packages-->
  <project path="packages/apps/Bluetooth" name="android_packages_apps_Bluetooth" remote="du" revision="m" />
@@ -480,6 +495,14 @@
  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.9" name="android-prebuilts-gcc-linux-x86-arm-arm-eabi-4.9" remote="du" revision="m" />
 
  <!-- vendor -->
- <project path="vendor/du" name="android_vendor_du" remote="du" revision="m" />
+ <project path="vendor/du" name="android_vendor_du" remote="s3" revision="m" />
+ 
+ <!-- Vendor blobs -->
+  <project path="vendor/samsung" name="proprietary_vendor_samsung" remote="haxynox" revision="Mmm"/>
+ 
+<!-- Device Trees -->
+  <project path="device/samsung/i9300" name="device_samsung_i9300" remote="s3" revision="Mmm"/>
+  <project path="device/samsung/smdk4412-common" name="device_samsung_smdk4412-common" remote="haxynox" revision="Mmm"/>
+  <project path="kernel/samsung/smdk4412" name="android_kernel_samsung_smdk4412" remote="haxynox" revision="Mmm"/>
 
 </manifest>
